@@ -1,15 +1,14 @@
-import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { HEIGHT, WIDTH } from '../../assets/size'
-import { Icon, Button } from 'react-native-elements'
 import { black, white } from '../../assets/color/Color'
-import Switch from '../atom/Switch'
 import BoxStatus from '../molecule/BoxStatus'
 import Header from '../organism/Header'
 import LightsStatus from '../organism/LightsStatus'
 import LinearGradient from 'react-native-linear-gradient'
 
-export default function MainTemplate() {
+export default function MainTemplate({route}: any) {
+    const {name} = route.params;
     return (
         <LinearGradient
             colors={['#211D1D', black, '#828282']}
@@ -23,7 +22,7 @@ export default function MainTemplate() {
             </View>
             <View style={styles.header}>
                 <Header
-                    title='Phòng ngủ'
+                    title={name}
                 />
             </View>
             <View style={styles.main}>

@@ -2,7 +2,6 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import BoxSlide from '../molecule/BoxSlide'
 import { WIDTH } from '../../assets/size'
-import { parent } from '../../assets/color/Color'
 
 export default function LightsStatus() {
   return (

@@ -1,13 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Icon } from 'react-native-elements'
 import { HEIGHT, WIDTH } from '../assets/size';
 import { arrayTab } from './../data/arrayTab';
 import { parent, white, yellow } from '../assets/color/Color';
+import RoomDB from '../services/Room';
 const Tab = createBottomTabNavigator();
-
+const roomDB = new RoomDB(); 
 export default function TabBottom() {
+    useEffect(()=>{
+        async function name() {
+        }
+        name()
+    })
     return (
         <Tab.Navigator
             backBehavior='initialRoute'

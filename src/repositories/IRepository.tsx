@@ -1,2 +1,2 @@
-import DeviceDB from "./DTO/DeviceDB";
+import DeviceDB from "./Modals/DeviceDB";
 

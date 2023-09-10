@@ -2,11 +2,12 @@ export default class RoomDB{
     private id: any;
     private name: string | undefined;
     private image: any;
-    private ip: any;
-    constructor(id?: any, name?: string, image?: any){
+    private status: any;
+    constructor(id?: any, name?: string, image?: any, status?: number){
         this.id  =  id;
         this.name = name; 
         this.image = image; 
+        this.status = status
     }
     getId(){
         return this.id
@@ -26,14 +27,11 @@ export default class RoomDB{
     setImage(image: any){
         this.image = image
     }
-    Add (){
-
+    getStatus(){
+        return this.status
     }
-    Update(){
-
-    }
-    Delete(){
-
+    setStatus(status: any){
+        this.status = status
     }
 }
 
