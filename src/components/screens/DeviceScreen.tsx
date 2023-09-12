@@ -34,7 +34,7 @@ export default function DeviceScreen(): JSX.Element {
           )
         }}
       />
-      <ButtonAdd />
+      <ButtonAdd title='Thiết bị mới' onPress={()=>{}}/>
     </LinearGradient>
   )
 }

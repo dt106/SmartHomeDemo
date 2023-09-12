@@ -5,22 +5,26 @@ import { WIDTH } from '../../assets/size'
 
 export default function LightsStatus() {
   return (
-    <View style = {styles.container}>
+    <View style={styles.container}>
       <BoxSlide
-      name='light'
+        icon='light'
+        title='Đèn trần'
       />
       <BoxSlide
-      name='nightlight-round'
+        icon='nightlight-round'
+        title={'Đèn ngủ'}
       />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-    container:{
-        width:WIDTH/1.2,
-        borderRadius: 15,
-        padding: 15,
-        backgroundColor: '#282424'
-    }
+  container: {
+    flexDirection:'column',
+    rowGap:10,
+    width: WIDTH / 1.2,
+    borderRadius: 15,
+    padding: 15,
+    backgroundColor: '#282424'
+  }
 })

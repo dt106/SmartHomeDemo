@@ -5,6 +5,7 @@ import { white } from '../../assets/color/Color'
 import { useNavigation } from '@react-navigation/native'
 interface Props {
     title?: string
+    onDelete?:()=>void
 }
 export default function Header(props: Props) {
     const navigation = useNavigation();
@@ -12,7 +13,7 @@ export default function Header(props: Props) {
         <View style={styles.container}>
             <Icon name='chevron-back' type='ionicon' color={white} size={28} onPress={()=>navigation.goBack()}/>
             <Text style={styles.titleAlign}>{props.title}</Text>
-            <Icon name='home' type='ionicon' color={white} size={28}/>
+            <Icon onPress={props.onDelete} name='delete' type='material' color={white} size={28}/>
         </View>
     )
 }

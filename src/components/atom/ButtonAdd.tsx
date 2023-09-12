@@ -4,22 +4,24 @@ import { HEIGHT, WIDTH } from '../../assets/size'
 import { black, white, yellow } from '../../assets/color/Color'
 interface Props{
   style?: StyleProp<ViewStyle>
+  title: string
+  onPress?: ()=>void
 }
 export default function ButtonAdd(props: Props) {
   return (
-    <TouchableOpacity style = {[styles.container,props.style]}>
-      <Text style = {styles.title}>Thêm thiết bị</Text>
+    <TouchableOpacity onPress={props.onPress} style = {[styles.container,props.style]}>
+      <Text style = {styles.title}>{props.title}</Text>
     </TouchableOpacity>
-
   )
 }
 
 const styles = StyleSheet.create({
   container:{
+    position: 'absolute',
     width: WIDTH/1.5,
     height: HEIGHT/16,
     backgroundColor:yellow,
-    marginBottom:WIDTH/9,
+    bottom:WIDTH/7,
     alignSelf:'center',
     borderRadius: 15,
     alignItems:'center',

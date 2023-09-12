@@ -5,10 +5,16 @@ export const tb1 = require('../../assets/images/bork.png')
 export const bed: any = require('./Rooms/bed.jpg');
 export const living: any = require('./Rooms/living.jpg');
 export const lobby: any = require('./Rooms/lobby.jpg');
-
+const kitchen : any = require('./Rooms/kitchen.jpg');
+const bork = require('../images/bork.png');
+const xiaomi = require('../images/image-8.png');
+const led = require('../images/image-9.png');
+const smartTv = require('../images/smartTv.png');
+const tv = require('../images/TV.png');
 
 export const mapping: any = {
-    1: bed,
-    2: living,
-    3: lobby
+    'bed': bed,
+    'living': living,
+    'lobby': lobby,
+    'kitchen': kitchen,
 };

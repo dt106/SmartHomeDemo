@@ -3,9 +3,9 @@ import React, { useEffect } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Icon } from 'react-native-elements'
 import { HEIGHT, WIDTH } from '../assets/size';
-import { arrayTab } from './../data/arrayTab';
+import { arrayTab } from '../data/arrayTab';
 import { parent, white, yellow } from '../assets/color/Color';
-import RoomDB from '../services/Room';
+import RoomDB from '../services/databases/Room';
 const Tab = createBottomTabNavigator();
 const roomDB = new RoomDB(); 
 export default function TabBottom() {

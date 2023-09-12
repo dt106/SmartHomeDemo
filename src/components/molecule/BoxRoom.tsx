@@ -7,18 +7,18 @@ import Label from '../atom/Label'
 import { Image } from 'react-native'
 import { bed, living } from '../../assets/images/URL'
 interface Props {
-  title: string
   navigation: any
   image?: any
+  route: any
 }
 export default function BoxRoom(props: Props) {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => props.navigation.navigate('Room',{name: props.title})}
+      onPress={() => props.navigation.navigate('Room',{item: props.route})}
     >
       <Label
-        content={props.title}
+        content={props.route.Name}
         color={yellow}
         size={WIDTH / 20}
       />
@@ -47,6 +47,5 @@ const styles = StyleSheet.create({
   },
   image: {
     width: WIDTH / 2.3,
-    borderWidth: 1,
   }
 })

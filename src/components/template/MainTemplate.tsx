@@ -1,28 +1,49 @@
-import { Image, StyleSheet, View } from 'react-native'
-import React from 'react'
+import { Image, Modal, StyleSheet, View } from 'react-native'
+import React, { useState } from 'react'
 import { HEIGHT, WIDTH } from '../../assets/size'
 import { black, white } from '../../assets/color/Color'
 import BoxStatus from '../molecule/BoxStatus'
 import Header from '../organism/Header'
 import LightsStatus from '../organism/LightsStatus'
 import LinearGradient from 'react-native-linear-gradient'
-
-export default function MainTemplate({route}: any) {
-    const {name} = route.params;
+import RoomDB from '../../services/databases/Room'
+import { useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux'
+import { setRefresh } from '../../redux/slices/Room'
+import ConfirmDelete from '../molecule/ConfirmDelete'
+const room = new RoomDB();
+export default function MainTemplate({ route }: any) {
+    const [closeModal, setModal] = useState(false);
+    const navigation = useNavigation();
+    const dispatch = useDispatch();
+    const { item } = route.params;
+    const onDelete = async () => {
+        setModal(true)
+    }
+    const handleYes = async() => {
+        dispatch(setRefresh(true));
+        await room.Delete(item.ID)
+        navigation.goBack();
+        setModal(false);
+    }
+    const handleNo = () => {
+        setModal(false)
+    }
     return (
         <LinearGradient
             colors={['#211D1D', black, '#828282']}
-            start={{x: 0.5, y: 0.6}}
+            start={{ x: 0.5, y: 0.6 }}
             style={styles.container}>
             <View style={styles.viewImage}>
                 <Image
-                    source={require('../../assets/images/image7.png')}
+                    source={require('../../assets/images/Rooms/image7.png')}
                     style={{ width: WIDTH, resizeMode: 'stretch' }}
                 />
             </View>
             <View style={styles.header}>
                 <Header
-                    title={name}
+                    title={item.Name}
+                    onDelete={onDelete}
                 />
             </View>
             <View style={styles.main}>
@@ -31,17 +52,28 @@ export default function MainTemplate({route}: any) {
                         image='drop'
                         decription='Độ ẩm'
                         percent={10}
+                        titlebox={'Thêm máy độ ẩm'}
                     />
                     <BoxStatus
                         image={'wind'}
                         decription='Điều hoà không khí'
                         percent={100}
+                        titlebox={'Thêm điều hoà'}
                     />
                 </View>
                 <View>
                     <LightsStatus />
                 </View>
             </View>
+            <Modal
+                visible = {closeModal}
+                transparent
+            >
+                <ConfirmDelete
+                    Yes={handleYes}
+                    No={handleNo}
+                />
+            </Modal>
         </LinearGradient>
     )
 }

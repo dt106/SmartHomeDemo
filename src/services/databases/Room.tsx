@@ -1,4 +1,3 @@
-import { enablePromise } from "react-native-sqlite-storage";
 import { serviceDB } from "./serviceDB";
 
 export default class RoomDB extends serviceDB {
@@ -27,13 +26,15 @@ export default class RoomDB extends serviceDB {
             console.error(error)
         }
     }
-    async InsertRoom(name: string, image: number, status: number) {
+    async InsertRoom( name: string, image: string) {
         try {
             (await this.GetConnection()).transaction((tx => {
                 tx.executeSql(
-                    `INSERT INTO ${this.tableName}(${this.name}, ${this.image}, ${this.status})  
-                    VALUES (?,?,?)`,
-                    [name, image, status],
+                    `
+                    INSERT OR IGNORE INTO ${this.tableName} (${this.name}, ${this.image}, ${this.status})  
+                    VALUES (?,?,1)
+                    `,
+                    [name, image],
                     () => console.log('Insert Succesfull!'),
                     (error) => console.error(error)
                 )
@@ -62,5 +63,19 @@ export default class RoomDB extends serviceDB {
         const lst = (await this.GetConnection())
             .executeSql(`SELECT * FROM ${this.tableName}`)
         return (await lst);
+    }
+    async Delete(ID : Number){
+        try {
+            (await this.GetConnection()).transaction((tx)=>{
+                tx.executeSql(
+                    `DELETE FROM ${this.tableName} WHERE ${this.id} = ? `,
+                    [ID],
+                    () => console.log('Deleted !'),
+                    (error) => console.error(error)
+                )
+            })
+        } catch (error) {
+            console.error(error)
+        }
     }
 }

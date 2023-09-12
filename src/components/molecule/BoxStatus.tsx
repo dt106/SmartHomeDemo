@@ -1,39 +1,52 @@
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { HEIGHT, WIDTH } from '../../assets/size'
 import { parent, white } from '../../assets/color/Color'
 import Switch from '../atom/Switch'
 import Label from '../atom/Label'
 import { Icon } from 'react-native-elements'
+import ButtonAdd from '../atom/ButtonAdd'
 type imageString = 'drop' | 'wind'
 interface Props {
     style?: StyleProp<ViewStyle>
     image?: imageString | undefined
     decription?: string
-    percent?: number 
+    percent?: number
+    titlebox?: any
 }
 
 export default function BoxStatus(props: Props) {
+    const [add, setAdd] = useState(false);
+    const handleAdd = ()=>{
+        setAdd(true)
+    }
     return (
         <View style={styles.container}>
-            <View style={styles.airStatus}>
-                <Label
-                    content={`${props.percent||0}%`}
-                    color={white}
-                    size={34}
-                />
-                <Icon
-                    name={props.image!}
-                    type={props.image === 'drop' ? 'simple-line-icon' : 'feather'}
-                    color={white}
-                    size={30}
-                />
-            </View>
-            <Text style = {styles.airTitle}>{props.decription}</Text>
-            <View style={styles.viewSwitch}>
-                <Text style={styles.title}>On</Text>
-                <Switch />
-            </View>
+
+            {add?
+                (
+                    <><View style={styles.airStatus}>
+                        <Label
+                            content={`${props.percent || 0}%`}
+                            color={white}
+                            size={34} />
+                        <Icon
+                            name={props.image!}
+                            type={props.image === 'drop' ? 'simple-line-icon' : 'feather'}
+                            color={white}
+                            size={30} />
+                    </View><Text style={styles.airTitle}>{props.decription}</Text><View style={styles.viewSwitch}>
+                            <Text style={styles.title}>On</Text>
+                            <Switch />
+                        </View></>
+                ): (
+                    <ButtonAdd
+                    title={props.titlebox}
+                    onPress={handleAdd}
+                    style = {{width: WIDTH/3}}
+                    />
+                )
+            }
         </View>
     )
 }
@@ -45,7 +58,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#282424',
         borderRadius: 15,
         padding: 15,
-        flexDirection:'column',
+        flexDirection: 'column',
         rowGap: 10
     },
     airStatus: {
@@ -53,7 +66,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    airTitle:{
+    airTitle: {
         color: white
     },
     viewSwitch: {
@@ -61,7 +74,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         position: 'absolute',
         borderTopWidth: 1,
-        borderStyle:'dotted',
+        borderStyle: 'dotted',
         borderColor: white,
         bottom: 0,
         flexDirection: "row",

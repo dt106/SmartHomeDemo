@@ -9,10 +9,8 @@
 
 import React, { useEffect, useState } from 'react';
 import {
-  SafeAreaView,
   StatusBar,
   StyleSheet,
-  View,
 } from 'react-native';
 import { Provider } from 'react-redux'
 import 'react-native-gesture-handler'
@@ -21,21 +19,20 @@ import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { store } from './src/redux/store/store';
-import RoomDB from './src/services/Room';
+import RoomDB from './src/services/databases/Room';
 const roomDB = new RoomDB();
 const Tab = createBottomTabNavigator();
 function App(): JSX.Element {
   const [status, setStatus] = useState(false)
-  useEffect(()=>{
-    roomDB.DropTable()
-    .then(async()=>{
-      roomDB.CreateDB().then(async()=>{
-        await roomDB.InsertRoom('Phòng khách', 2, 1);
-        await roomDB.InsertRoom('Phòng ngủ 1',1 , 1);
-        await roomDB.InsertRoom('Phòng ngủ 2', 1, 1);
-        await roomDB.InsertRoom('Hành lang', 3, 1);
-      });
-    })
+  useEffect(() => {
+    // roomDB.DropTable().then(async()=>{
+    roomDB.CreateDB().then(async () => {
+      // await roomDB.InsertRoom(1, 'Phòng khách', 'living');
+      // await roomDB.InsertRoom(2, 'Phòng ngủ 1', 'bed');
+      // await roomDB.InsertRoom(3, 'Phòng ngủ 2', 'bed');
+      // await roomDB.InsertRoom(4, 'Hành lang', 'lobby');
+    });
+    // })
 
     async function createDatabase() {
     }
@@ -43,14 +40,14 @@ function App(): JSX.Element {
     }
     createDatabase();
     Insert();
-  },[])
+  }, [])
   return (
     <>
-      <StatusBar
-        translucent
-        hidden={false}
-        barStyle={'light-content'}
-      />
+        <StatusBar
+          translucent
+          hidden={false}
+          barStyle={'light-content'}
+        />
       <Provider store={store}>
         <NavigationContainer>
           <TabBottom />

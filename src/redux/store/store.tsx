@@ -1,9 +1,10 @@
-import {configureStore} from '@reduxjs/toolkit'
-import { Device } from './../slices/Device';
+import {configureStore} from '@reduxjs/toolkit';
 import DeviceReducer from '../slices/Device';
+import RoomReducer from '../slices/Room';
 
 export const store = configureStore({
     reducer:{
-        Device: DeviceReducer
+        Device: DeviceReducer,
+        Room: RoomReducer
     }
 })
