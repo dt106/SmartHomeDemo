@@ -6,12 +6,14 @@ import { white } from './../../assets/color/Color';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon } from 'react-native-elements';
 import Label from '../atom/Label';
-
-export default function Weather() {
+interface Props{
+  title: string
+}
+export default function Weather(props: Props) {
   return (
     <LinearGradient colors={['#1E90FF', white]} style={styles.container}>
       <View style = {styles.titleView}>
-      <Text style={{ color: yellow }}>Thời tiết</Text>
+      <Text style={{ color: yellow }}>{props.title}</Text>
       <View style = {styles.location}>
         <Label
         content='Hà Nội'

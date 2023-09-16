@@ -26,6 +26,20 @@ export default class RoomDB extends serviceDB {
             console.error(error)
         }
     }
+    async Drop(){
+        try{
+            (await this.GetConnection()).transaction(tx=>{
+                tx.executeSql(
+                    `DROP TABLE ${this.tableName}`,
+                    [],
+                    ()=>console.log(`Droped ${this.tableName}`),
+                    (error)=>console.error(error)
+                )
+            })
+        }catch(error){
+            console.error(error)
+        }
+    }
     async InsertRoom( name: string, image: string) {
         try {
             (await this.GetConnection()).transaction((tx => {

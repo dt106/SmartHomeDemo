@@ -1,32 +1,24 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
+import {HEIGHT, WIDTH} from './src/assets/size';
+import i18n from './src/languages/i18next';
+import {useTranslation} from 'react-i18next';
 
-class MyScreen extends Component {
-  componentDidMount() {
-    this.checkSQLiteConnection();
-  }
-
-  async checkSQLiteConnection() {
-    const db = SQLite.openDatabase({ name: 'yourDatabase.db', location: 'default' });
-    (await db).transaction((tx) => {
-      tx.executeSql(
-        'SELECT 1 FROM sqlite_master',
-        [],
-        () => console.log('Kết nối thành công với SQLite'),
-        (error) => console.log('Lỗi kết nối với SQLite: ', error)
-      );
-    });
-  }
-
-  render() {
-    return (
-      <View>
-        {/* Các thành phần và giao diện khác */}
-        <Text>Kiểm tra kết nối SQLite</Text>
-      </View>
-    );
-  }
-}
-
+const MyScreen = () => {
+  const {t} = useTranslation();
+  return (
+    <View style={styles.container}>
+      <Text>{t('overloading.label')}</Text>
+    </View>
+  );
+};
+const styles = StyleSheet.create({
+  container: {
+    width: WIDTH,
+    height: HEIGHT,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 export default MyScreen;

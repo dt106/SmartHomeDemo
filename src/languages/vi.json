@@ -1,0 +1,18 @@
+{
+        "title":"Nhà thông minh",
+        "overloading":{
+            "label":"Điều khiển nhà thông mình",
+            "content": "Kiểm soát tất cả các thiết bị thông minh và tận hưởng cuộc sống của bạn",
+            "btnstart":"Bắt đầu"
+        },
+        "login": {
+            "username": "Tài khoản",
+            "password": "Mật khẩu",
+            "login": "Đăng nhập",
+            "forgot":"Quên mật khẩu?"
+        },
+        "home":{
+            "btnadd": "Thêm phòng",
+            "weather": "Thời tiết"
+        }
+}

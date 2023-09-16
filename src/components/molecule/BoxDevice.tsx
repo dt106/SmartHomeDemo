@@ -1,10 +1,9 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import React from 'react'
 import type {PropsWithChildren} from 'react'
 import { HEIGHT, WIDTH } from '../../assets/size'
 import { parent, white } from '../../assets/color/Color'
 import Label from '../atom/Label'
-import { light1 } from '../../assets/images/URL'
 type Props = PropsWithChildren<{
   image: any,
   label: string,

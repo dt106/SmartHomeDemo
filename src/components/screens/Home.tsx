@@ -1,4 +1,4 @@
-import { FlatList, Modal, StatusBar, StyleSheet, View } from 'react-native'
+import { FlatList, Modal, StatusBar, StyleSheet, ToastAndroid, View } from 'react-native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { HEIGHT, WIDTH } from '../../assets/size'
 import LinearGradient from 'react-native-linear-gradient'
@@ -13,6 +13,7 @@ import { mapping } from '../../assets/images/URL'
 import { black } from '../../assets/color/Color'
 import { RefreshControl } from 'react-native-gesture-handler'
 import { setImage, setName, setRefresh } from '../../redux/slices/Room'
+import { useTranslation } from 'react-i18next'
 const roomDB = new RoomDB();
 
 type Props = PropsWithChildren<{
@@ -21,6 +22,7 @@ type Props = PropsWithChildren<{
 export default function Home(props: Props) {
     const [data, setData]: any = useState([])
     const [modal, setModal] = useState(false)
+    const {t} = useTranslation();
     const name = useSelector((state: any) => state.Room.name);
     const image = useSelector((state: any) => state.Room.image);
     const isRefresh = useSelector((state: any)=> state.Room.isRefresh);
@@ -34,10 +36,15 @@ export default function Home(props: Props) {
         DeleteStatus();
     }
     const handleSave = async () => {
-        await roomDB.InsertRoom(name, image);
-        setModal(false);
-        DeleteStatus();
-        dispatch(setRefresh(true));
+        if(name !== '' && image !== ''){
+            await roomDB.InsertRoom(name, image);
+            setModal(false);
+            DeleteStatus();
+            dispatch(setRefresh(true));
+        }
+        else{
+            ToastAndroid.show('Nhập đủ thông tin!', ToastAndroid.SHORT);
+        }
     }
     const onRefresh = useCallback(() => {
         dispatch(setRefresh(true));
@@ -62,7 +69,7 @@ export default function Home(props: Props) {
             start={{ x: 0.5, y: 0.6 }}
             style={styles.container}
         >
-            <Weather />
+            <Weather title={t('home.weather')}/>
             <View style = {styles.main}>
                 <FlatList
                     refreshControl={<RefreshControl refreshing={isRefresh} onRefresh={onRefresh} />}
@@ -86,7 +93,7 @@ export default function Home(props: Props) {
                 </FlatList>
             </View>
             <ButtonAdd
-                title='Thêm phòng'
+                title={t('home.btnadd')}
                 onPress={() => setModal(true)}
             />
             <Modal

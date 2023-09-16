@@ -5,6 +5,6 @@ import RoomReducer from '../slices/Room';
 export const store = configureStore({
     reducer:{
         Device: DeviceReducer,
-        Room: RoomReducer
+        Room: RoomReducer,
     }
 })

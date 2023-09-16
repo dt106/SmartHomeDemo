@@ -1,6 +1,5 @@
 import DeviceScreen from "../components/screens/DeviceScreen";
-import Main from "../components/screens/Main";
-import MainTemplate from "../components/template/MainTemplate";
+import Account from "../components/screens/Account";
 import HomeStack from "../navigations/Stack/HomeStack";
 
 export const arrayTab = [
@@ -18,7 +17,7 @@ export const arrayTab = [
     },
     {
         route:'Profile',
-        component: Main,
+        component: Account,
         icon:'user-secret',
         type:'font-awesome',
     },

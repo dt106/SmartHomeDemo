@@ -1,4 +1,4 @@
-import { FlatList, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { FlatList, StatusBar, StyleSheet} from 'react-native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import { black, white } from '../../assets/color/Color'
@@ -7,8 +7,10 @@ import HeaderDevice from '../molecule/HeaderDevice'
 import BoxDevice from '../molecule/BoxDevice'
 import { arrImage } from '../../data/arrDevices'
 import ButtonAdd from '../atom/ButtonAdd'
+import { useTranslation } from 'react-i18next'
 
 export default function DeviceScreen(): JSX.Element {
+  const {t} = useTranslation();
   return (
     <LinearGradient
       colors={['#211D1D', black, '#828282']}

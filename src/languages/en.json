@@ -1,0 +1,18 @@
+{
+        "title": "SmartHome",
+        "overloading":{
+            "label":"Control smart home",
+            "content": "Control all your smart devices and enjoy your life",
+            "btnstart":"Get Started"
+        },
+        "login": {
+            "username":"Username",
+            "password": "Password",
+            "login": "Login",
+            "forgot":"Forgot password?"
+        },
+        "home":{
+            "btnadd": "Add Room",
+            "weather": "Weather"
+        }
+}
