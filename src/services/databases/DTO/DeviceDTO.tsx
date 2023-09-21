@@ -1,0 +1,36 @@
+export default class DeviceDTO {
+  id!: string;
+  tuyaId!: string;
+  dormitoryId!: string;
+  roomId!: string;
+  endUserProfileId!: any;
+  deviceTypeId!: number;
+  deviceClassId!: any;
+  tuyaIrRemoteId!: any;
+  tuyaIrRemoteBrandId!: any;
+  tuyaIrRemoteBrandName!: any;
+  unicastId!: number;
+  name!: string;
+  macAddress!: string;
+  firmwareVersion!: number;
+  appKey!: string;
+  netKey!: string;
+  deviceKey!: string;
+  ipAddress!: string;
+  iconId!: number;
+  statusId!: number;
+  networkTypeId: any;
+  homeControllerId!: string;
+  parentId!: string;
+  createdAt!: Date;
+  updatedAt!: Date;
+  deletedAt!: Date;
+  isLightingDevice: any;
+  informations: any;
+  warnings!: string;
+  errors!: string;
+  disabled: any;
+  generalInformations: any;
+  generalWarnings: any;
+  generalErrors: any;
+}

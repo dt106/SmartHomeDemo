@@ -1,3 +1,3 @@
 export const arrInfo = [
-    'displayName', 'email', 'username', 'sex[name]', 'phoneNumber','birthday'
+    'Name', 'Email', 'Gender', 'Phonenumber','Birthday'
 ]

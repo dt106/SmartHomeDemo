@@ -4,8 +4,8 @@
 // Ảnh màn hình đầu
 export const overload: any = require('./Rooms/2.jpg')
 // Ảnh Room
-const bed: any = require('./Rooms/bed.jpg');
-const living: any = require('./Rooms/living.jpg');
+export const bed: any = require('./Rooms/bed.jpg');
+export const living: any = require('./Rooms/living.jpg');
 const lobby: any = require('./Rooms/lobby.jpg');
 const kitchen: any = require('./Rooms/kitchen.jpg');
 // Ảnh roomDetail

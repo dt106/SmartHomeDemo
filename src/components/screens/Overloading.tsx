@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Label from '../atom/Label';
 import {overload} from '../../assets/images/URL';
 import {HEIGHT, WIDTH} from '../../assets/size';
@@ -14,14 +14,17 @@ import {Icon} from 'react-native-elements';
 import {white} from '../../assets/color/Color';
 import {useTranslation} from 'react-i18next';
 import Switch from '../atom/Switch';
-import { useDispatch} from 'react-redux';
 import i18n from '../../languages/i18next';
+import User from '../../services/databases/User';
+import Dormitory from '../../services/databases/Dormitory';
+const user = new User();
+const dorm = new Dormitory();
 interface Props {
   navigation: any;
 }
 export default function Overloading(props: Props) {
+  const [data, setDate] = useState({})
   const {t} = useTranslation();
-  const dispatch = useDispatch();
   const handleLogin = () => {
     props.navigation.replace('Login');
   };
@@ -32,6 +35,9 @@ export default function Overloading(props: Props) {
     else
     i18n.changeLanguage('vi');
   }
+  useEffect(()=>{
+    dorm.GetDormitories();
+  },[])
   return (
     <SafeAreaView>
       <Image style={{opacity: 0.8}} source={overload} resizeMode="stretch" />

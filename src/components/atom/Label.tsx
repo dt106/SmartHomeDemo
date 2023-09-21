@@ -15,7 +15,7 @@ export default function Label(props: Props) {
     <View>
       <Text
         style={[
-          {color: !props.color?black:props.color, fontSize: props.size, fontWeight: '600'},
+          {color: !props.color?black:props.color, fontSize: props.size, fontWeight: '600', textAlign:'center'},
           props.style,
         ]}>
         {props.content}

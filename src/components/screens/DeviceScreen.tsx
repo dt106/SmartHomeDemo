@@ -4,7 +4,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import { black, white } from '../../assets/color/Color'
 import { HEIGHT, WIDTH } from '../../assets/size'
 import HeaderDevice from '../molecule/HeaderDevice'
-import BoxDevice from '../molecule/BoxDevice'
 import { arrImage } from '../../data/arrDevices'
 import ButtonAdd from '../atom/ButtonAdd'
 import { useTranslation } from 'react-i18next'
@@ -19,22 +18,6 @@ export default function DeviceScreen(): JSX.Element {
     >
       <HeaderDevice
         quantity={arrImage.length}
-      />
-      <FlatList
-        data={arrImage}
-        keyExtractor={(doc: any, index: number) => index.toString()}
-        numColumns={2}
-        showsVerticalScrollIndicator={false}
-        columnWrapperStyle={{ gap: 20, marginVertical: 10, }}
-        renderItem={({ item, index }) => {
-          return (
-            <BoxDevice
-              label={item.label}
-              decription={item.decription}
-              image={item.image}
-            />
-          )
-        }}
       />
       <ButtonAdd title='Thiết bị mới' onPress={()=>{}}/>
     </LinearGradient>

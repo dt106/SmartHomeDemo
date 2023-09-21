@@ -1,26 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+import {StyleSheet} from 'react-native';
+import React, {PropsWithChildren} from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../../components/screens/Home';
 import MainTemplate from '../../components/template/MainTemplate';
+import Home_ListHC from '../../components/screens/Home_ListHC';
+import Home_ListDevice from '../../components/screens/Home_ListDevice';
 const Stack = createStackNavigator();
-export default function HomeStack() {
-    return (
-        <Stack.Navigator
-            screenOptions={{
-                headerShown: false
-            }}
-        >
-            <Stack.Screen
-                name='Home'
-                component={Home}
-            />
-            <Stack.Screen
-            name='Room'
-            component={MainTemplate}
-            />
-        </Stack.Navigator>
-    )
+type Props = PropsWithChildren<{
+  route?: any;
+}>;
+export default function HomeStack(props: Props) {
+  const data: any = props.route.params;
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Stack.Screen name="Home" component={Home} initialParams={data} />
+      <Stack.Screen name="List_HC" component={Home_ListHC} />
+      <Stack.Screen name='List_Device' component={Home_ListDevice}/>
+    </Stack.Navigator>
+  );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

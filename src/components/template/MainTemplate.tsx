@@ -11,7 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {setRefresh} from '../../redux/slices/Room';
 import ConfirmDelete from '../molecule/ConfirmDelete';
-import {mapping2} from '../../assets/images/URL';
+import {  mapping2 } from '../../assets/images/URL';
 const room = new RoomDB();
 export default function MainTemplate({route}: any) {
   const [closeModal, setModal] = useState(false);
@@ -37,12 +37,12 @@ export default function MainTemplate({route}: any) {
       style={styles.container}>
       <View style={styles.viewImage}>
         <Image
-          source={mapping2[item.Image]}
+          source={mapping2['bed']}
           style={{width: WIDTH, resizeMode: 'stretch'}}
         />
       </View>
       <View style={styles.header}>
-        <Header title={item.Name} onDelete={onDelete} />
+        <Header title={'Ten Phong'} onDelete={onDelete} />
       </View>
       <View style={styles.main}>
         <View style={styles.box}>

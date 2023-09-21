@@ -18,64 +18,64 @@ interface Props {
 export default function Switch(props: Props) {
   const x = props.value === true ? 30 : 0;
   const [enable, setEnable] = useState(props.value);
-  const pan: any = useRef(new Animated.ValueXY({x: x, y: 0})).current;
-  const panResponder = useRef(
-    PanResponder.create({
-      onMoveShouldSetPanResponder: () => true,
-      onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}], {
-        useNativeDriver: false,
-      }),
-      onPanResponderRelease: () => {
-        const moveX = pan.x._value;
-        const moveY = pan.y._value;
+  // const pan: any = useRef(new Animated.ValueXY({x: x, y: 0})).current;
+  // const panResponder = useRef(
+  //   PanResponder.create({
+  //     onMoveShouldSetPanResponder: () => true,
+  //     onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}], {
+  //       useNativeDriver: false,
+  //     }),
+  //     onPanResponderRelease: () => {
+  //       const moveX = pan.x._value;
+  //       const moveY = pan.y._value;
 
-        const minY = 0;
-        const maxY = 30;
+  //       const minY = 0;
+  //       const maxY = 30;
 
-        let adjustedX;
-        if (moveX <= 15) {
-          adjustedX = 0;
-          setEnable(false);
-          if (props.valueChange) props.valueChange(false);
-        } else {
-          adjustedX = 30;
-          setEnable(true);
-          if (props.valueChange) props.valueChange(true);
-        }
-        const adjustedY = Math.max(minY, Math.min(moveY, maxY));
-        Animated.spring(pan, {
-          toValue: {x: adjustedX, y: adjustedY},
-          useNativeDriver: false,
-        }).start();
-      },
-    }),
-  ).current;
+  //       let adjustedX;
+  //       if (moveX <= 15) {
+  //         adjustedX = 0;
+  //         setEnable(false);
+  //         if (props.valueChange) props.valueChange(false);
+  //       } else {
+  //         adjustedX = 30;
+  //         setEnable(true);
+  //         if (props.valueChange) props.valueChange(true);
+  //       }
+  //       const adjustedY = Math.max(minY, Math.min(moveY, maxY));
+  //       Animated.spring(pan, {
+  //         toValue: {x: adjustedX, y: adjustedY},
+  //         useNativeDriver: false,
+  //       }).start();
+  //     },
+  //   }),
+  // ).current;
+  const handlepress = () => {
+    setEnable(!enable);
+    if (props.valueChange)
+    props.valueChange(!enable)
+  };
   useEffect(() => {}, []);
   return (
-    <View style={[styles.container, {backgroundColor:enable?black:yellow}]}>
+    <TouchableOpacity
+      onPress={handlepress}
+      style={[styles.container, {backgroundColor: enable ? black : yellow}]}>
       <View style={[styles.textView]}>
         <Label
-          content={props.textActive?props.textActive:''}
+          content={props.textActive ? props.textActive : ''}
           style={{display: enable ? 'flex' : 'none', color: yellow}}
         />
         <Label
-          content={props.textInActive?props.textInActive:''}
+          content={props.textInActive ? props.textInActive : ''}
           style={{display: !enable ? 'flex' : 'none', color: black}}
         />
       </View>
-      <Animated.View
-        style={{
-          transform: [{translateX: pan.x}],
-          position: 'absolute',
-        }}
-        {...panResponder.panHandlers}>
-        <TouchableOpacity
+        <View
           style={[
             styles.switch,
-            {backgroundColor: enable ? yellow : black},
-          ]}></TouchableOpacity>
-      </Animated.View>
-    </View>
+            enable?styles.enable:styles.block,
+          ]}></View>
+    </TouchableOpacity>
   );
 }
 
@@ -93,13 +93,23 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
     backgroundColor: black,
-    borderRadius: 50,
-    marginHorizontal: 5,
+    borderRadius: 100,
     elevation: 20,
     shadowColor: 'black',
+    position:'absolute'
   },
   textView: {
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
+  enable: {
+    right: 5,
+    backgroundColor: yellow,
+    alignSelf:'flex-end'
+  },
+  block:{
+    left: 5,
+    backgroundColor:black,
+    alignSelf:'flex-start'
+  }
 });

@@ -14,19 +14,17 @@ import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {store} from './src/redux/store/store';
 import RoomDB from './src/services/databases/Room';
-import MainStack from './src/components/organism/MainStack';
+import MainStack from './src/navigations/Stack/MainStack';
 import {I18nextProvider} from 'react-i18next';
 import i18n from './src/languages/i18next';
+import Dormitory from './src/services/databases/Dormitory';
 import MyScreen from './Demo';
-const roomDB = new RoomDB();
-
+const room = new RoomDB();
+const drom = new Dormitory();
 function App(): JSX.Element {
   useEffect(() => {
-    roomDB.CreateDB().then(async () => {});
-    async function createDatabase() {}
-    async function Insert() {}
-    createDatabase();
-    Insert();
+    room.CreateDB().then(async () => {});
+    drom.CreateTable();
   }, []);
   return (
     <>

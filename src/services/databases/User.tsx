@@ -5,7 +5,7 @@ export default class User extends serviceDB {
   private id = 'ID';
   private name = 'Name';
   private email = 'Email';
-  private password = 'Password';
+  private gender = 'Gender';
   private birthday = 'Birthday';
   private phonenumber = 'Phonenumber';
   private User() {}
@@ -17,6 +17,7 @@ export default class User extends serviceDB {
                         ${this.id} INTEGER PRIMARY KEY AUTOINCREMENT,
                         ${this.name} NVARCHAR(50),
                         ${this.email} VARCHAR(150) NOT NULL UNIQUE,
+                        ${this.gender} TINYINT,
                         ${this.birthday} DATE,
                         ${this.phonenumber} VARCHAR(10)
                     )`,
@@ -29,48 +30,51 @@ export default class User extends serviceDB {
       console.error(error);
     }
   }
-  async Insert(name: string, email: string, birthday: Date, phonenumber: string) {
+  async Insert(
+    name: string,
+    email: string,
+    gender: number,
+    birthday: Date,
+    phonenumber: string,
+  ) {
     try {
-        (await this.GetConnection()).executeSql(
-                `
-                INSERT OR IGNORE INTO ${this.tableName} (${this.name}, ${this.email}, ${this.birthday}, ${this.phonenumber})
-                VALUES (?,?,?,?)
+      (await this.GetConnection()).executeSql(
+        `
+                INSERT OR IGNORE INTO ${this.tableName} (${this.name}, ${this.email},${this.gender} ,${this.birthday}, ${this.phonenumber})
+                VALUES (?,?,?,?,?)
                 `,
-                [name, email, birthday, phonenumber],
-                ()=>{},
-                (error)=>console.error(error)
-                )
+        [name, email, gender, birthday, phonenumber],
+        () => {},
+        error => console.error(error),
+      );
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
-  async Drop(){
-    try{
-        (await this.GetConnection()).transaction(tx=>{
-            tx.executeSql(
-                `DROP TABLE ${this.tableName}`,
-                [],
-                ()=>console.log(`Droped ${this.tableName}`),
-                (error)=>console.error(error)
-            )
-        })
-    }catch(error){
-        console.error(error)
-    }
-}
-  async GetUser(userID: any){
-    (await this.GetConnection()).transaction(tx=>{
+  async Drop() {
+    try {
+      (await this.GetConnection()).transaction(tx => {
         tx.executeSql(
-            `SELECT * FROM ${this.tableName} WHERE ${this.id} = ?`,
-            [userID],
-            ()=>console.log(),
-            (error)=>console.error(error)
-        )
-    })
+          `DROP TABLE ${this.tableName}`,
+          [],
+          () => console.log(`Droped ${this.tableName}`),
+          error => console.error(error),
+        );
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
-  async Getalluser(){
-    const lst = (await this.GetConnection())
-        .executeSql(`SELECT * FROM ${this.tableName}`)
-    return (await lst);
-}
+  async GetUser(email: any) {
+    const response = (await this.GetConnection()).executeSql(
+      `SELECT * FROM ${this.tableName} WHERE ${this.email} = '${email}' LIMIT 1`,
+    );
+    return (await response).at(0)?.rows.raw().at(0);
+  }
+  async Getalluser() {
+    const lst = (await this.GetConnection()).executeSql(
+      `SELECT * FROM ${this.tableName}`,
+    );
+    return await lst;
+  }
 }

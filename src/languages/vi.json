@@ -12,7 +12,8 @@
             "forgot":"Quên mật khẩu?"
         },
         "home":{
-            "btnadd": "Thêm phòng",
+            "dorm": "Nhà",
+            "hc": "Bộ điều khiển nhà",
             "weather": "Thời tiết"
         }
 }

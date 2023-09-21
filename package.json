@@ -11,6 +11,7 @@
     "configure-sqlite": "cd node_modules/react-native-sqlite-storage && npm run configure"
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^4.5.1",
     "@react-native-async-storage/async-storage": "^1.19.3",
     "@react-native-community/eslint-config": "^3.2.0",
     "@react-navigation/bottom-tabs": "^6.5.8",

@@ -12,7 +12,8 @@
             "forgot":"Forgot password?"
         },
         "home":{
-            "btnadd": "Add Room",
+            "dorm": "Dormitory",
+            "hc": "Home controller",
             "weather": "Weather"
         }
 }

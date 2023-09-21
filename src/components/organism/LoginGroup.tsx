@@ -13,7 +13,7 @@ import {HEIGHT, WIDTH} from '../../assets/size';
 import ButtonAdd from '../atom/ButtonAdd';
 import {useNavigation} from '@react-navigation/native';
 import {black} from '../../assets/color/Color';
-import loginSV from '../../services/loginAxios';
+import loginSV from '../../services/axios';
 import Storage from '../../services/asyncstorage';
 import User from '../../services/databases/User';
 import { useTranslation } from 'react-i18next';
@@ -41,6 +41,7 @@ export default function LoginGroup(props: Props) {
       await user.Insert(
           response.data.displayName,
           response.data.email,
+          response.data.sexId,
           response.data.birthday,
           response.data.phonenumber,
         )

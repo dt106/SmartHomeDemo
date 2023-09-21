@@ -1,29 +1,24 @@
-import {StyleSheet} from 'react-native';
-import React, {useEffect} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import React, {useCallback, useEffect, useMemo, useRef} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Icon} from 'react-native-elements';
 import {HEIGHT, WIDTH} from '../../assets/size';
 import {arrayTab} from '../../data/arrayTab';
 import {white, yellow} from '../../assets/color/Color';
 import User from '../../services/databases/User';
+import loginSV from '../../services/axios';
 const user = new User();
+const API = new loginSV();
 const Tab = createBottomTabNavigator();
-export default function TabBottom({route}:{route: any}) {
+export default function TabBottom({route}: {route: any}) {
   const {data}: any = route.params;
-  useEffect(() => {
-    async function InsertUser() {
-      const  response = await user.Getalluser();
-    }
-    InsertUser();
-  });
   return (
     <Tab.Navigator
       backBehavior="initialRoute"
       screenOptions={{
         tabBarStyle: styles.tab,
         headerShown: false,
-      }}
-      >
+      }}>
       {arrayTab.map((item: any, index: number) => {
         return (
           <Tab.Screen
@@ -58,5 +53,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginHorizontal: WIDTH * 0.08,
     elevation: 10,
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
