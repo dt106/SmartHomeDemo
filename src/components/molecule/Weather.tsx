@@ -1,8 +1,7 @@
 import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { HEIGHT, WIDTH } from '../../assets/size'
-import { black, parent, yellow } from '../../assets/color/Color'
-import { white } from './../../assets/color/Color';
+import { Color } from './../../assets/color/Color';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon } from 'react-native-elements';
 import Label from '../atom/Label';
@@ -11,18 +10,18 @@ interface Props{
 }
 export default function Weather(props: Props) {
   return (
-    <LinearGradient colors={['#1E90FF', white]} style={styles.container}>
+    <LinearGradient colors={['#1E90FF', Color.white]} style={styles.container}>
       <View style = {styles.titleView}>
-      <Text style={{ color: yellow }}>{props.title}</Text>
+      <Text style={{ color: Color.yellow }}>{props.title}</Text>
       <View style = {styles.location}>
         <Label
         content='Hà Nội'
-        color={yellow}
+        color={Color.yellow}
         />
         <Icon
           name='location'
           type='evilicon'
-          color={yellow}
+          color={Color.yellow}
         />
       </View>
       </View>
@@ -30,19 +29,19 @@ export default function Weather(props: Props) {
         <Icon
           name='partly-sunny-outline'
           type='ionicon'
-          color={yellow}
+          color={Color.yellow}
           size={WIDTH / 8}
         />
         <View style={styles.celsiusView}>
           <Label
             content='10'
-            color={yellow}
+            color={Color.yellow}
             size={WIDTH / 12}
           />
           <Icon
             name='temperature-celsius'
             type='material-community'
-            color={yellow}
+            color={Color.yellow}
             size={WIDTH / 11}
           />
         </View>

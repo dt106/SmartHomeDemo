@@ -1,4 +1,4 @@
-import {serviceDB} from './serviceDB';
+import {serviceDB} from '../serviceDB';
 
 export default class User extends serviceDB {
   private tableName: string = 'User';

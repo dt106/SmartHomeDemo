@@ -1,7 +1,7 @@
 import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Label from '../atom/Label'
-import { white } from '../../assets/color/Color'
+import { Color } from '../../assets/color/Color'
 interface Props{
   quantity?: number
 } 
@@ -11,7 +11,7 @@ export default function HeaderDevice(props: Props) {
     <View style = {styles.header}>
         <Label
         content='Tìm kiếm'
-        color={white}
+        color={Color.white}
         size={30}
         />
         <Text style = {styles.quantity}>{props.quantity} Thiết bị</Text>
@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
     
     },
     quantity:{
-        color: white
+        color: Color.white
     }
 })

@@ -3,3 +3,7 @@ export const DORMITORIES_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/sync/
 export const HCs_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/sync/list-home-controller';
 export const HC_STATUS_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/sync/mobile/get-status-homecontroller';
 export const DEVICES_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/sync/list-device';
+export const CRM_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/issue/count';
+export const LIST_ISSUE = 'https://iot-dev.truesight.asia/rpc/iot-ebe/issue/list';
+export const ISSUE_CREATE_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/issue/create';
+export const ISSUE_DELETE_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/issue/delete';

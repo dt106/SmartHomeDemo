@@ -1,17 +1,18 @@
 import { StyleSheet } from "react-native";
-import { parent, white } from "../../../assets/color/Color";
+import { Color } from "../../../assets/color/Color";
 import { WIDTH, HEIGHT } from "../../../assets/size";
 
 export const styles = StyleSheet.create({
     container:{
         width: WIDTH / 2.3,
-        backgroundColor: parent,
+        backgroundColor: Color.parent,
         borderRadius: 15,
         alignItems: 'center',
         flexDirection: 'column',
-        rowGap: 20,
+        rowGap: 10,
         padding: 10,
+        marginBottom: 15,
         elevation: 15, 
-        shadowColor: white
+        shadowColor: Color.white
     }
 })

@@ -11,13 +11,11 @@ import Label from '../atom/Label';
 import {overload} from '../../assets/images/URL';
 import {HEIGHT, WIDTH} from '../../assets/size';
 import {Icon} from 'react-native-elements';
-import {white} from '../../assets/color/Color';
+import {Color} from '../../assets/color/Color';
 import {useTranslation} from 'react-i18next';
 import Switch from '../atom/Switch';
 import i18n from '../../languages/i18next';
-import User from '../../services/databases/User';
-import Dormitory from '../../services/databases/Dormitory';
-const user = new User();
+import Dormitory from '../../services/databases/SQLITE/Dormitory';
 const dorm = new Dormitory();
 interface Props {
   navigation: any;
@@ -61,8 +59,8 @@ export default function Overloading(props: Props) {
         </View>
 
         <TouchableOpacity onPress={handleLogin} style={styles.btnView}>
-          <Label content={t('overloading.btnstart')} color="white" size={30} />
-          <Icon name="right" type="antdesign" size={32} color={white} />
+          <Label content={t('overloading.btnstart')} color={Color.white} size={30} />
+          <Icon name="right" type="antdesign" size={32} color={Color.white} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>

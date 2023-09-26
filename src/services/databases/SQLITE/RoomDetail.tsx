@@ -1,4 +1,4 @@
-import {serviceDB} from './serviceDB';
+import {serviceDB} from '../serviceDB';
 
 export default class RoomDetail extends serviceDB {
   private tableName = 'RoomDetail';

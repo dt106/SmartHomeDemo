@@ -1,12 +1,12 @@
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Icon} from 'react-native-elements';
-import {white, yellow} from '../../assets/color/Color';
+import {Color} from '../../assets/color/Color';
 import {useNavigation} from '@react-navigation/native';
 interface Props {
   title?: string;
-  onDelete?: () => void;
   icon?: React.ReactNode;
+  
 }
 export default function Header(props: Props) {
   const navigation = useNavigation();
@@ -15,23 +15,12 @@ export default function Header(props: Props) {
       <Icon
         name="chevron-back"
         type="ionicon"
-        color={yellow}
+        color={Color.yellow}
         size={28}
         onPress={() => navigation.goBack()}
       />
       <Text style={styles.titleAlign}>{props.title}</Text>
-      {!props.icon ? (
-        <Icon
-          onPress={props.onDelete}
-          name="delete"
-          type="material"
-          color={white}
-          size={28}
-        />
-      ):(
-        props.icon
-      )
-    }
+      <View style={styles.right}>{props.icon}</View>
     </View>
   );
 }
@@ -44,9 +33,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   titleAlign: {
-    color: yellow,
+    color: Color.yellow,
     alignSelf: 'center',
     fontSize: 18,
     fontWeight: '600',
+  },
+  right: {
+    width: 30,
   },
 });

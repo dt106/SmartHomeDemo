@@ -11,7 +11,7 @@ import {HEIGHT, WIDTH} from '../../assets/size';
 import LoginGroup from '../organism/LoginGroup';
 import Popup from '../molecule/Popup';
 import Modal from 'react-native-modal';
-import User from '../../services/databases/User';
+import User from '../../services/databases/SQLITE/User';
 const user = new User();
 interface Props {}
 

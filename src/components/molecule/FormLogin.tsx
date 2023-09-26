@@ -9,7 +9,7 @@ import {
 import React, {PropsWithChildren, useEffect, useRef, useState} from 'react';
 import {StyleProp, View} from 'react-native';
 import {Icon} from 'react-native-elements';
-import {white} from '../../assets/color/Color';
+import {Color} from '../../assets/color/Color';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 type Props = PropsWithChildren<{
@@ -32,7 +32,6 @@ export default function FormLogin(props: Props) {
     }
   },[props.blur])
   useEffect(()=>{
-    // i18n.changeLanguage(lng);
   },[])
   return (
       <KeyboardAvoidingView style={[styles.formGroup, props.Containerstyle]}>
@@ -85,6 +84,6 @@ const styles = StyleSheet.create({
   title: {
     position: 'absolute',
     top: -10,
-    backgroundColor: white,
+    backgroundColor: Color.white,
   },
 });

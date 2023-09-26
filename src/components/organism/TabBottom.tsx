@@ -1,14 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useCallback, useEffect, useMemo, useRef} from 'react';
+import {StyleSheet} from 'react-native';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Icon} from 'react-native-elements';
 import {HEIGHT, WIDTH} from '../../assets/size';
 import {arrayTab} from '../../data/arrayTab';
-import {white, yellow} from '../../assets/color/Color';
-import User from '../../services/databases/User';
-import loginSV from '../../services/axios';
-const user = new User();
-const API = new loginSV();
+import {Color} from '../../assets/color/Color';
+
+
 const Tab = createBottomTabNavigator();
 export default function TabBottom({route}: {route: any}) {
   const {data}: any = route.params;
@@ -31,7 +29,7 @@ export default function TabBottom({route}: {route: any}) {
                 <Icon
                   name={item.icon}
                   type={item.type}
-                  color={!focused ? white : yellow}
+                  color={!focused ? Color.white : Color.yellow}
                   style={{transform: [{scale: focused ? 1.4 : 1}]}}
                 />
               ),

@@ -10,14 +10,14 @@ import React, { useEffect, useState} from 'react';
 import Label from '../atom/Label';
 import FormLogin from '../molecule/FormLogin';
 import {HEIGHT, WIDTH} from '../../assets/size';
-import ButtonAdd from '../atom/ButtonAdd';
 import {useNavigation} from '@react-navigation/native';
-import {black} from '../../assets/color/Color';
+import {Color} from '../../assets/color/Color';
 import loginSV from '../../services/axios';
 import Storage from '../../services/asyncstorage';
-import User from '../../services/databases/User';
+import User from '../../services/databases/SQLITE/User';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../languages/i18next';
+import Button from '../atom/Button';
 const loginsv = new loginSV();
 const store = new Storage();
 const user = new User();
@@ -82,11 +82,7 @@ export default function LoginGroup(props: Props) {
           Containerstyle={{marginHorizontal: WIDTH / 15}}
         />
       </TouchableWithoutFeedback>
-      <ButtonAdd
-        style={{elevation: 15, shadowColor: black}}
-        onPress={handleLogin}
-        title={t('login.login')}
-      />
+      <Button title='Đăng nhập' style = {styles.btn} onPress={handleLogin}/>
       <Text style={styles.forget}>{t('login.forgot')}</Text>
     </View>
   );
@@ -105,6 +101,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     elevation: 15,
     opacity: 0.9,
+    flexDirection:'column',
+    rowGap: 15,
+  },
+  btn:{
+    width: WIDTH/1.5,
+    alignSelf:'center'
   },
   forget: {
     position: 'absolute',

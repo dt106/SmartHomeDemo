@@ -1,10 +1,9 @@
 import {StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle} from 'react-native';
 import React from 'react';
-import {StyleProps} from 'react-native-reanimated';
 import { black } from '../../assets/color/Color';
 
 interface Props {
-  content: string;
+  content: any;
   color?: string;
   size?: number;
   style?: StyleProp<TextStyle>;
@@ -15,7 +14,7 @@ export default function Label(props: Props) {
     <View>
       <Text
         style={[
-          {color: !props.color?black:props.color, fontSize: props.size, fontWeight: '600', textAlign:'center'},
+          {color: !props.color?black:props.color, fontSize: props.size, fontWeight: '600'},
           props.style,
         ]}>
         {props.content}

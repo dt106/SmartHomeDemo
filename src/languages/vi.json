@@ -13,7 +13,40 @@
         },
         "home":{
             "dorm": "Nhà",
-            "hc": "Bộ điều khiển nhà",
+            "hc": {
+                "title":"Danh sách điều khiển",
+                "device":"thiết bị",
+                "devices":"thiết bị"
+            },
             "weather": "Thời tiết"
+        },
+        "account": {
+            "profile" : {
+                "title":"Trang cá nhân",
+                "name":"Tên",
+                "email":"Email",
+                "gender":"Giới tính",
+                "phonenumber":"Số điện thoại",
+                "birthday":"Ngày sinh"
+            },
+            "feedback": {
+                "modaladd":{
+                    "addissue":"Thêm vấn đề",
+                    "issuename":"Tên vấn đề",
+                    "entername":"Điền tên vấn đề",
+                    "content":"Nội dung",
+                    "entercontent":"Điền nội dung",
+                    "addsuccess":"Thêm thành công",
+                    "faild":"Lỗi",
+                    "warning":"Chưa đủ thông tin"
+                },
+                "feedback": "Phản hồi",
+                "delete":"Xoá",
+                "deletesuccessful":"Xoá thành công"
+            },
+            "setting":{
+                "setting":"Cài đặt",
+                "language":"Ngôn ngữ"
+            }
         }
 }

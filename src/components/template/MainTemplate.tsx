@@ -1,12 +1,12 @@
 import {Image, Modal, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {HEIGHT, WIDTH} from '../../assets/size';
-import {black, white} from '../../assets/color/Color';
+import {Color} from '../../assets/color/Color';
 import BoxStatus from '../molecule/BoxStatus';
 import Header from '../organism/Header';
 import LightsStatus from '../organism/LightsStatus';
 import LinearGradient from 'react-native-linear-gradient';
-import RoomDB from '../../services/databases/Room';
+import RoomDB from '../../services/databases/SQLITE/Room';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {setRefresh} from '../../redux/slices/Room';
@@ -32,7 +32,7 @@ export default function MainTemplate({route}: any) {
   };
   return (
     <LinearGradient
-      colors={['#211D1D', black, '#828282']}
+      colors={['#211D1D', Color.black, '#828282']}
       start={{x: 0.5, y: 0.6}}
       style={styles.container}>
       <View style={styles.viewImage}>
@@ -42,7 +42,7 @@ export default function MainTemplate({route}: any) {
         />
       </View>
       <View style={styles.header}>
-        <Header title={'Ten Phong'} onDelete={onDelete} />
+        <Header title={'Ten Phong'} />
       </View>
       <View style={styles.main}>
         <View style={styles.box}>
@@ -100,6 +100,6 @@ const styles = StyleSheet.create({
     width: WIDTH,
     height: 50,
     bottom: 0,
-    backgroundColor: white,
+    backgroundColor: Color.white,
   },
 });

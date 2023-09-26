@@ -13,7 +13,40 @@
         },
         "home":{
             "dorm": "Dormitory",
-            "hc": "Home controller",
+            "hc": {
+                "title":"List Home Controller",
+                "device":"device",
+                "devices":"devices"
+            },
             "weather": "Weather"
+        },
+        "account": {
+            "profile" : {
+                "title":"Profile",
+                "name":"Name",
+                "email":"Email",
+                "gender":"Gender",
+                "phonenumber":"Phone Number",
+                "birthday":"Birthday"
+            },
+            "feedback": {
+                "modaladd":{
+                    "addissue":"Add Issue",
+                    "issuename":"Issue Name",
+                    "entername":"Enter name",
+                    "entercontent":"Enter content",
+                    "content":"Content",
+                    "addsuccess":"Add successful",
+                    "faild":"Faild",
+                    "warning":"Not enough information"
+                },
+                "feedback": "Feedback",
+                "delete":"Delete",
+                "deletesuccessful":"Delete successful"
+            },
+            "setting":{
+                "setting":"Setting",
+                "language":"Language"
+            }
         }
 }

@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
-import {black, yellow} from '../../assets/color/Color';
+import {Color} from '../../assets/color/Color';
 import Label from './Label';
 interface Props {
   textActive?: string;
@@ -59,15 +59,15 @@ export default function Switch(props: Props) {
   return (
     <TouchableOpacity
       onPress={handlepress}
-      style={[styles.container, {backgroundColor: enable ? black : yellow}]}>
+      style={[styles.container, {backgroundColor: enable ? Color.black : Color.yellow}]}>
       <View style={[styles.textView]}>
         <Label
           content={props.textActive ? props.textActive : ''}
-          style={{display: enable ? 'flex' : 'none', color: yellow}}
+          style={{display: enable ? 'flex' : 'none', color: Color.yellow}}
         />
         <Label
           content={props.textInActive ? props.textInActive : ''}
-          style={{display: !enable ? 'flex' : 'none', color: black}}
+          style={{display: !enable ? 'flex' : 'none', color: Color.black}}
         />
       </View>
         <View
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   container: {
     width: 65,
     height: 30,
-    backgroundColor: black,
+    backgroundColor: Color.black,
     borderRadius: 25,
     justifyContent: 'center',
     elevation: 15,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   switch: {
     width: 25,
     height: 25,
-    backgroundColor: black,
+    backgroundColor: Color.black,
     borderRadius: 100,
     elevation: 20,
     shadowColor: 'black',
@@ -104,12 +104,12 @@ const styles = StyleSheet.create({
   },
   enable: {
     right: 5,
-    backgroundColor: yellow,
+    backgroundColor: Color.yellow,
     alignSelf:'flex-end'
   },
   block:{
     left: 5,
-    backgroundColor:black,
+    backgroundColor:Color.black,
     alignSelf:'flex-start'
   }
 });

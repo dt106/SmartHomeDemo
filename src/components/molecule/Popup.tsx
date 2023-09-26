@@ -10,7 +10,7 @@ import {HEIGHT, WIDTH} from '../../assets/size';
 import Storage from '../../services/asyncstorage';
 import Label from '../atom/Label';
 import LinearGradient from 'react-native-linear-gradient';
-import {black, yellow} from '../../assets/color/Color';
+import {Color} from '../../assets/color/Color';
 const store = new Storage();
 
 interface Props {
@@ -43,7 +43,7 @@ export default function Popup(props: Props) {
             <Label
               style={styles.label}
               content={info.username}
-              color={yellow}
+              color={Color.yellow}
               size={20}
             />
           </TouchableOpacity>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     height: 40,
     alignSelf: 'center',
     borderBottomWidth: 0.7,
-    borderColor: yellow,
+    borderColor: Color.yellow,
   },
   label: {
     lineHeight: 40,

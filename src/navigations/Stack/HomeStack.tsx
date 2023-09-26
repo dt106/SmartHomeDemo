@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
 import React, {PropsWithChildren} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Home from '../../components/screens/Home';
+import Home from '../../components/screens/Home/Home';
 import MainTemplate from '../../components/template/MainTemplate';
-import Home_ListHC from '../../components/screens/Home_ListHC';
-import Home_ListDevice from '../../components/screens/Home_ListDevice';
+import Home_ListHC from '../../components/screens/Home/Home_ListHC';
+import Home_ListDevice from '../../components/screens/Home/Home_ListDevice';
 const Stack = createStackNavigator();
 type Props = PropsWithChildren<{
   route?: any;

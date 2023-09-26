@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { PropsWithChildren } from 'react'
 import { HEIGHT, WIDTH } from '../../assets/size'
 import Label from '../atom/Label'
-import { parent, white } from '../../assets/color/Color'
+import { Color } from '../../assets/color/Color'
 type Props = PropsWithChildren<{
     Yes: ()=>void,
     No:()=>void
@@ -15,7 +15,7 @@ export default function ConfirmDelete(props: Props) {
             <TouchableOpacity onPress={props.Yes} style = {styles.btn}>
                 <Label content='Có' color='white'/>
             </TouchableOpacity>
-            <Text style = {{borderWidth:0.3, borderColor: white}}></Text>
+            <Text style = {{borderWidth:0.3, borderColor: Color.white}}></Text>
             <TouchableOpacity onPress={props.No} style = {styles.btn}>
                 <Label content='Không' color='white'/>
             </TouchableOpacity>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     container :{
         width: WIDTH/1.6,
         height: HEIGHT/10,
-        backgroundColor: parent,
+        backgroundColor: Color.parent,
         borderRadius: 15,
         alignSelf:'center',
         justifyContent:'center',
