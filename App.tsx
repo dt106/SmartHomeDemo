@@ -17,13 +17,19 @@ import MainStack from './src/navigations/Stack/MainStack';
 import {I18nextProvider} from 'react-i18next';
 import i18n from './src/languages/i18next';
 import Dormitory from './src/services/databases/SQLITE/Dormitory';
-import RoomDB from './src/services/databases/SQLITE/Room';
-const room = new RoomDB();
+import HC from './src/services/databases/SQLITE/HC';
+import HCDTO from './src/services/databases/DTO/HCDTO';
 const drom = new Dormitory();
+const hc = new HC();
 function App(): JSX.Element {
   useEffect(() => {
-    room.CreateDB().then(async () => {});
+    hc.CreateTable();
     drom.CreateTable();
+    hc.GetAll().then((doc)=>{
+      doc?.map((item)=>{
+        console.log(item)
+      })
+    })
   }, []);
   return (
     <>

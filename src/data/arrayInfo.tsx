@@ -1,1 +1,1 @@
-export const arrInfo = ['name', 'email','gender','phonenumber', 'birthday'];
+export const arrInfo = ['Name', 'Email','Gender','Phonenumber', 'Birthday'];

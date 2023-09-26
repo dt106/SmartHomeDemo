@@ -7,8 +7,10 @@ import {Icon} from 'react-native-elements';
 import SmartAPI from '../../services/axios';
 import HCDTO from '../../services/databases/DTO/HCDTO';
 import DormitoryDTO from '../../services/databases/DTO/DormitoryDTO';
+import HC from '../../services/databases/SQLITE/HC';
 
 const API = new SmartAPI();
+const hcST = new HC();
 interface IconProp {
   name: string;
   type: string;
@@ -25,6 +27,9 @@ export default function Home_BoxDorm(props: Props) {
   const handleHC = () => {
     API.GetHCsByDormID(data?.id).then((doc: HCDTO[]) => {
       props.onPress(doc);
+      doc.map((item: HCDTO)=>{
+        hcST.Insert(item);
+      })
     });
   };
   return (

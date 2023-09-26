@@ -58,7 +58,6 @@ export default function Issue() {
       setCount(doc?.length);
     });
   }, []);
-
   return (
     <View style={styles.container}>
       <Header

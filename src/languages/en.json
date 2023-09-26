@@ -23,11 +23,11 @@
         "account": {
             "profile" : {
                 "title":"Profile",
-                "name":"Name",
-                "email":"Email",
-                "gender":"Gender",
-                "phonenumber":"Phone Number",
-                "birthday":"Birthday"
+                "Name":"Name",
+                "Email":"Email",
+                "Gender":"Gender",
+                "Phonenumber":"Phone Number",
+                "Birthday":"Birthday"
             },
             "feedback": {
                 "modaladd":{

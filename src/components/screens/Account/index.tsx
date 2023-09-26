@@ -36,9 +36,7 @@ export default function Account(props: Props): JSX.Element {
       </View>
       <View style={styles.group}>
         <TouchableHighlight
-          onPress={() => {
-            handleNavigate('profile');
-          }}
+          onPress={() => { handleNavigate('profile') }}
           style={styles.item}>
           <Label
             content={t('account.profile.title')}

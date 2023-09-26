@@ -5,13 +5,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import type {PropsWithChildren} from 'react';
 import Weather from '../../molecule/Weather';
 import {useTranslation} from 'react-i18next';
-import RoomDB from '../../../services/databases/SQLITE/Room';
 import loginSV from '../../../services/axios';
 import Home_BoxDorm from '../../molecule/Home_BoxDorm';
 import {Color} from '../../../assets/color/Color';
 import Home_List from '../../organism/Home_List';
 
-const roomDB = new RoomDB();
 const API = new loginSV();
 type Props = PropsWithChildren<{
   route: any;

@@ -6,24 +6,18 @@ import BoxStatus from '../molecule/BoxStatus';
 import Header from '../organism/Header';
 import LightsStatus from '../organism/LightsStatus';
 import LinearGradient from 'react-native-linear-gradient';
-import RoomDB from '../../services/databases/SQLITE/Room';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {setRefresh} from '../../redux/slices/Room';
 import ConfirmDelete from '../molecule/ConfirmDelete';
 import {  mapping2 } from '../../assets/images/URL';
-const room = new RoomDB();
 export default function MainTemplate({route}: any) {
   const [closeModal, setModal] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const {item} = route.params;
-  const onDelete = async () => {
-    setModal(true);
-  };
   const handleYes = async () => {
     dispatch(setRefresh(true));
-    await room.Delete(item.ID);
     navigation.goBack();
     setModal(false);
   };

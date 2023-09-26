@@ -9,12 +9,12 @@ export const arrayTab = [
         icon:'home',
         type:'entypo',
     },
-    {
-        route:'Dashboard',
-        component: DeviceScreen,
-        icon:'space-dashboard',
-        type:'material',
-    },
+    // {
+    //     route:'Dashboard',
+    //     component: DeviceScreen,
+    //     icon:'space-dashboard',
+    //     type:'material',
+    // },
     {
         route:'Profile',
         component: AccountStack,

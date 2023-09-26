@@ -23,11 +23,11 @@
         "account": {
             "profile" : {
                 "title":"Trang cá nhân",
-                "name":"Tên",
-                "email":"Email",
-                "gender":"Giới tính",
-                "phonenumber":"Số điện thoại",
-                "birthday":"Ngày sinh"
+                "Name":"Tên",
+                "Email":"Email",
+                "Gender":"Giới tính",
+                "Phonenumber":"Số điện thoại",
+                "Birthday":"Ngày sinh"
             },
             "feedback": {
                 "modaladd":{

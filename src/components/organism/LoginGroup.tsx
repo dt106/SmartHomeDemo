@@ -18,6 +18,8 @@ import User from '../../services/databases/SQLITE/User';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../languages/i18next';
 import Button from '../atom/Button';
+import { useDispatch } from 'react-redux';
+import { setEmail } from '../../redux/slices/User';
 const loginsv = new loginSV();
 const store = new Storage();
 const user = new User();
@@ -29,6 +31,7 @@ export default function LoginGroup(props: Props) {
   const [username, setuserName] = useState('');
   const [password, setpassword] = useState('');
   const {t} = useTranslation();
+  const dispatch = useDispatch();
   const navigation: any = useNavigation();
   const handleLogin = async () => {
     const info: Object = {
@@ -45,6 +48,7 @@ export default function LoginGroup(props: Props) {
           response.data.birthday,
           response.data.phonenumber,
         )
+      dispatch(setEmail(response.data.email));
       navigation.navigate('Main', {data: response.data});
       ToastAndroid.show(
         `Xin chào ${response.data.displayName}`,
