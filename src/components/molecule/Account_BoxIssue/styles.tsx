@@ -32,6 +32,10 @@ export const styles = StyleSheet.create({
     },
     btn:{
         height: HEIGHT/15,
-        borderRadius: 0
+        borderRadius: 0,
+        width: WIDTH/6,
+    },
+    viewBtn:{
+        flexDirection:'row'
     }
 })

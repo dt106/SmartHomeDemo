@@ -18,18 +18,15 @@ import {I18nextProvider} from 'react-i18next';
 import i18n from './src/languages/i18next';
 import Dormitory from './src/services/databases/SQLITE/Dormitory';
 import HC from './src/services/databases/SQLITE/HC';
-import HCDTO from './src/services/databases/DTO/HCDTO';
+import Device from './src/services/databases/SQLITE/Device';
 const drom = new Dormitory();
 const hc = new HC();
+const device = new Device();
 function App(): JSX.Element {
   useEffect(() => {
     hc.CreateTable();
     drom.CreateTable();
-    hc.GetAll().then((doc)=>{
-      doc?.map((item)=>{
-        console.log(item)
-      })
-    })
+    device.CreateTable();
   }, []);
   return (
     <>

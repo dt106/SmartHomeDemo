@@ -2,7 +2,7 @@ export default class DormitoryDTO{
      address!: string
      createdAt!: Date  ; 
      deletedAt!: Date ; 
-     disabled!: Date ; 
+     disabled!: boolean ; 
      endUserId!: number  ; 
      errors!: string ;  
      generalErrors : any ; 

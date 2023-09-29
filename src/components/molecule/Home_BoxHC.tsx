@@ -8,7 +8,9 @@ import SmartAPI from '../../services/axios';
 import HCDTO from '../../services/databases/DTO/HCDTO';
 import DeviceDTO from '../../services/databases/DTO/DeviceDTO';
 import { useTranslation } from 'react-i18next';
+import Device from '../../services/databases/SQLITE/Device';
 const API = new SmartAPI();
+const deviceST = new Device();
 interface Props {
   data?: HCDTO;
   onPress: (value: any) => void;
@@ -18,9 +20,10 @@ export default function Home_BoxHC(props: Props) {
   const [content, setcontent] = useState('');
   const {t} = useTranslation();
   const handlePress = async() => {
-    if (props.data) {
       props.onPress(data);
-    }
+      data.map((item: DeviceDTO)=>{
+        deviceST.Insert(item);
+      })
   };
   useEffect(()=>{
     API.GetDevicesByDormID(props.data?.dormitoryId).then(

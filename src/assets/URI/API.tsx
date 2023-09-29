@@ -7,3 +7,4 @@ export const CRM_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/issue/count';
 export const LIST_ISSUE = 'https://iot-dev.truesight.asia/rpc/iot-ebe/issue/list';
 export const ISSUE_CREATE_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/issue/create';
 export const ISSUE_DELETE_URL = 'https://iot-dev.truesight.asia/rpc/iot-ebe/issue/delete';
+export const ISSUE_UPDATE  = ' https://iot-dev.truesight.asia/rpc/iot-ebe/issue/update';

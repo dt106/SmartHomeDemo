@@ -15,10 +15,12 @@ import IssueDTO from '../../../services/databases/DTO/Issue';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Button from '../../atom/Button';
 import SmartAPI from '../../../services/axios';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import DeviceDTO from '../../../services/databases/DTO/DeviceDTO';
 type Props = PropsWithChildren<{
   data?: IssueDTO;
   response?: (value: boolean) => void;
+  edit?: (value: IssueDTO) => void | undefined;
 }>;
 
 const API = new SmartAPI();
@@ -29,18 +31,31 @@ export default function Account_BoxIssue(props: Props) {
   const handleDelete = async () => {
     const response = await API.DeleteIssue(props.data);
     if (response?.status === 200) {
-      ToastAndroid.show( t('account.feedback.deletesuccessful'), ToastAndroid.SHORT);
+      ToastAndroid.show(
+        t('account.feedback.deletesuccessful'),
+        ToastAndroid.SHORT,
+      );
       if (props.response) props.response(true);
     } else {
       ToastAndroid.show('Lỗi', ToastAndroid.SHORT);
     }
   };
+  const handleEdit = () =>{
+    props.edit!(props.data!)
+  }
   const rightWipe = () => (
-    <Button
-      children={<Icon name="delete" color={Color.white} />}
-      style={styles.btn}
-      onPress={handleDelete}
-    />
+    <View style={styles.viewBtn}>
+      <Button
+        children={<Icon name="edit" type="material" color={'white'} />}
+        onPress={handleEdit}
+        style={styles.btn}
+      />
+      <Button
+        children={<Icon name="delete" color={Color.white} />}
+        style={[styles.btn, {backgroundColor: 'red'}]}
+        onPress={handleDelete}
+      />
+    </View>
   );
   useEffect(() => {
     switch (props.data?.issueStatusId) {

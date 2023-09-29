@@ -16,7 +16,6 @@ import {useTranslation} from 'react-i18next';
 import Switch from '../atom/Switch';
 import i18n from '../../languages/i18next';
 import Dormitory from '../../services/databases/SQLITE/Dormitory';
-const dorm = new Dormitory();
 interface Props {
   navigation: any;
 }
@@ -33,9 +32,7 @@ export default function Overloading(props: Props) {
     else
     i18n.changeLanguage('vi');
   }
-  useEffect(()=>{
-    dorm.GetDormitories();
-  },[])
+
   return (
     <SafeAreaView>
       <Image style={{opacity: 0.8}} source={overload} resizeMode="stretch" />

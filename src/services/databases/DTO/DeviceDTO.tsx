@@ -13,7 +13,6 @@ export default class DeviceDTO {
   name!: string;
   macAddress!: string;
   firmwareVersion!: number;
-  appKey!: string;
   netKey!: string;
   deviceKey!: string;
   ipAddress!: string;

@@ -38,7 +38,7 @@ export default class HC extends serviceDB{
             ${this.endUserProfileId} VARCAR(30),
             ${this.dormitoryId} VARCHAR(30),
             ${this.name} NVARCHAR(50),
-            ${this.macAddress} VARCHAR(20) UNIQUE,
+            ${this.macAddress} VARCHAR(20),
             ${this.ipAddress} VARCHAR(20) ,
             ${this.wifiName} NVARCHAR(50),
             ${this.timeZone} DATE,
@@ -58,7 +58,6 @@ export default class HC extends serviceDB{
             ${this.warnings} NVARCHAR(50),
             ${this.errors} NVARCHAR(50),
             ${this.disabled} VARCHAR(20)
-            
         )`
         try {
             (await this.GetConnection()).executeSql(
@@ -77,12 +76,11 @@ export default class HC extends serviceDB{
         let paramKeys = "";
         let paramValues = ""
         const sql = `INSERT OR IGNORE INTO ${this.tableName} VALUES (${values})`
-        // console.log(values)
         try {
             (await this.GetConnection()).executeSql(
                 sql,
                 [],
-                (doc)=>{console.log('ok')},
+                ()=>{},
                 error=>console.log(error)
             )
         } catch (error) {
@@ -93,5 +91,17 @@ export default class HC extends serviceDB{
         const sql = `SELECT * FROM ${this.tableName}`;
         const response = (await this.GetConnection()).executeSql(sql)
         return (await response).at(0)?.rows.raw();
+    }
+    async DropTable(){
+        const sql = `DROP TABLE ${this.tableName}`;
+        try {
+            (await this.GetConnection()).executeSql(
+                sql,
+                [],
+                ()=>console.log(`${this.tableName} deleted`)
+                )
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

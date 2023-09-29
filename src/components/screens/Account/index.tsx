@@ -12,7 +12,6 @@ import {TouchableHighlight} from '@gorhom/bottom-sheet';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 import User from '../../../services/databases/SQLITE/User';
-const user = new User();
 type Props = PropsWithChildren<{
   route: any;
 }>;

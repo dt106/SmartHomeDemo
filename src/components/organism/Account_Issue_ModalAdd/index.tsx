@@ -1,22 +1,24 @@
 import {Icon} from 'react-native-elements';
-import {View, TextInput, TouchableWithoutFeedback} from 'react-native';
+import {View, TextInput, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 import Label from '../../atom/Label';
 import Button from '../../atom/Button';
 import {Color} from './../../../assets/color/Color';
 import {useRef, PropsWithChildren, useState} from 'react';
 import { useTranslation } from 'react-i18next';
+import IssueDTO from '../../../services/databases/DTO/Issue';
 type Props = PropsWithChildren<{
   onSave?: () => void;
   onCancle?: () => void;
   title: (value: string)=>void;
   issue: (value: string)=>void;
+  data?: IssueDTO
 }>;
 const IssueModaAdd = (props: Props) => {
   const titleRef: any = useRef();
   const issueRef: any = useRef();
-  const [title, setTitle] = useState('');
-  const [issue, setIssue] = useState('');
+  const [title, setTitle] = useState(props.data?.title);
+  const [issue, setIssue] = useState(props.data?.description);
   const {t} = useTranslation();
   const handleChangeTitle = (value: string) => {
     setTitle(value);
@@ -62,6 +64,9 @@ const IssueModaAdd = (props: Props) => {
             onChangeText={value => handleChangeIssue(value)}
           />
         </View>
+        <TouchableOpacity>
+          <Icon name='image' type='ionicon' color={Color.white}/>
+        </TouchableOpacity>
         <View style={styles.btnView}>
           <Button
             children={<Icon name="add" type="material" color={'white'} />}

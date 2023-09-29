@@ -42,7 +42,7 @@ export default function Popup(props: Props) {
             }}>
             <Label
               style={styles.label}
-              content={info.username}
+              content={info?.username?info.username:''}
               color={Color.yellow}
               size={20}
             />

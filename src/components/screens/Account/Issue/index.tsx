@@ -9,7 +9,8 @@ import {Icon} from 'react-native-elements';
 import {Color} from '../../../../assets/color/Color';
 import Label from '../../../atom/Label';
 import IssueModaAdd from '../../../organism/Account_Issue_ModalAdd';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import IssueDTO from '../../../../services/databases/DTO/Issue';
 const API = new SmartAPI();
 export default function Issue() {
   const [count, setCount]: any = useState();
@@ -18,25 +19,38 @@ export default function Issue() {
   const [data, setData]: any = useState([]);
   const [show, setShow] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [itemData, setItem]: any = useState();
   const {t} = useTranslation();
   const handleModal = () => {
     setShow(true);
   };
-  
+  const handleEdit = (value: IssueDTO) => {
+    setShow(true);
+    setItem(value);
+  };
   const handleSave = async () => {
     if (title !== '' && issue !== '') {
-      const response = await API.CreateIssue(title, issue);
+      let response: any = {};
+      if (!itemData) {
+        response =await API.CreateIssue(title, issue);
+      } else {
+        response =await API.UpdateIssue(itemData.id, title, issue);
+      }
       if (response?.status === 200) {
         ToastAndroid.show('Thêm thành công', ToastAndroid.SHORT);
         setShow(false);
         handleRefresh();
         setTitle('');
         setIssue('');
+        setItem(null);
       } else {
         ToastAndroid.show(t('account.feedback.modaladd.faild'), ToastAndroid.SHORT);
       }
     } else {
-      ToastAndroid.show(t('account.feedback.modaladd.warning'), ToastAndroid.SHORT);
+      ToastAndroid.show(
+        t('account.feedback.modaladd.warning'),
+        ToastAndroid.SHORT,
+      );
     }
   };
   const handleCancle = () => {
@@ -46,7 +60,7 @@ export default function Issue() {
   };
   const handleRefresh = () => {
     setRefresh(true);
-    API.GetListIssue().then((doc)=> {
+    API.GetListIssue().then(doc => {
       setData(doc);
       setCount(doc?.length);
       setRefresh(false);
@@ -84,13 +98,18 @@ export default function Issue() {
       </View>
       <View>
         <Home_List
-          refreshing = {refresh}
-          onRefresh={()=>handleRefresh()}
+          refreshing={refresh}
+          onRefresh={() => handleRefresh()}
           style={styles.lst}
           data={data}
           column={1}
-          styleItem = {{margin: 0, elevation: 10, shadowColor:Color.white}}
-          children={<Account_BoxIssue response={(value)=>handleRefresh()} />}
+          styleItem={{margin: 0, elevation: 10, shadowColor: Color.white}}
+          children={
+            <Account_BoxIssue
+              edit={value => handleEdit(value)}
+              response={value => handleRefresh()}
+            />
+          }
         />
       </View>
       <Modal
@@ -99,6 +118,7 @@ export default function Issue() {
         statusBarTranslucent
         animationType="fade">
         <IssueModaAdd
+          data={itemData}
           title={value => setTitle(value)}
           issue={value => setIssue(value)}
           onSave={handleSave}

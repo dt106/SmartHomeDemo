@@ -12,6 +12,7 @@ import {Icon} from 'react-native-elements';
 import {Color} from '../../assets/color/Color';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { WIDTH } from '../../assets/size';
 type Props = PropsWithChildren<{
   Containerstyle?: StyleProp<ViewStyle>;
   blur?: boolean;
@@ -25,20 +26,20 @@ export default function FormLogin(props: Props) {
   const {t} = useTranslation();
   const userRef: any = useRef();
   const passRef: any = useRef();
-  useEffect(()=>{
-    if(props.blur){
-      userRef.current.blur();
-      passRef.current.blur();
-    }
-  },[props.blur])
+  // useEffect(()=>{
+  //   if(props.blur){
+  //     userRef.current.blur();
+  //     passRef.current.blur();
+  //   }
+  // },[props.blur])
   useEffect(()=>{
   },[])
   return (
-      <KeyboardAvoidingView style={[styles.formGroup, props.Containerstyle]}>
+      <View style={[styles.formGroup, props.Containerstyle]}>
         <View style={styles.viewItem}>
           <Text style={styles.title}>{t('login.username')}</Text>
           <TextInput
-            ref={userRef}
+            // ref={userRef}
             value={props.username}
             onChangeText={(value: string) => props.ChangeUser(value)}
             placeholder={t('login.username')}
@@ -48,7 +49,7 @@ export default function FormLogin(props: Props) {
         <View style={styles.viewItem}>
           <Text style={styles.title}>{t('login.password')}</Text>
           <TextInput
-            ref={passRef}
+            // ref={passRef}
             value={props.password}
             secureTextEntry={!show ? true : false}
             onChangeText={(value: string) => props.ChangePassWord(value)}
@@ -61,7 +62,7 @@ export default function FormLogin(props: Props) {
             onPress={() => setShow(!show)}
           />
         </View>
-      </KeyboardAvoidingView>
+      </View>
   );
 }
 
@@ -73,6 +74,8 @@ const styles = StyleSheet.create({
   item: {
     fontSize: 17,
     fontWeight: '600',
+    width: WIDTH/2,
+    backgroundColor:'red'
   },
   viewItem: {
     flexDirection: 'row',

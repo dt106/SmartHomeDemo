@@ -16,7 +16,6 @@ import loginSV from '../../services/axios';
 import Storage from '../../services/asyncstorage';
 import User from '../../services/databases/SQLITE/User';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../languages/i18next';
 import Button from '../atom/Button';
 import { useDispatch } from 'react-redux';
 import { setEmail } from '../../redux/slices/User';
@@ -59,6 +58,7 @@ export default function LoginGroup(props: Props) {
     }
   };
   const handleUserNameChange = (value: string) => {
+    console.log(value);
     setuserName(value);
   };
   const handlePasswordChange = (value: string) => {

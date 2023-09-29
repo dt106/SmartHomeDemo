@@ -11,8 +11,6 @@ import {HEIGHT, WIDTH} from '../../assets/size';
 import LoginGroup from '../organism/LoginGroup';
 import Popup from '../molecule/Popup';
 import Modal from 'react-native-modal';
-import User from '../../services/databases/SQLITE/User';
-const user = new User();
 interface Props {}
 
 export default function Login() {
@@ -23,9 +21,6 @@ export default function Login() {
     setItem(value);
     setPopup(false);
   };
-  useEffect(()=>{
-    user.CreateTable();
-  },[])
   return (
     <TouchableWithoutFeedback onPress={()=>{
       setBlur(true);

@@ -6,6 +6,7 @@ import {
   HCs_URL,
   ISSUE_CREATE_URL,
   ISSUE_DELETE_URL,
+  ISSUE_UPDATE,
   LIST_ISSUE,
   LOGIN_URL,
 } from '../assets/URI/API';
@@ -40,6 +41,7 @@ export default class SmartAPI implements Iaxios {
   }
 
   async Login(info: Object) {
+    console.log('Login');
     try {
       const response = await axios.post(LOGIN_URL, info);
       return response;
@@ -145,12 +147,37 @@ export default class SmartAPI implements Iaxios {
       console.log(error);
     }
   }
+  async UpdateIssue(id : number, title: string, description: string) {
+    const body ={
+      "id": id,
+      "title": title,
+      "issueStatusId": 1,
+      "description": description,
+      "resolveContent": null,
+      "customerId": 622811,
+      "completedAt": null,
+      "endUser": null,
+      "informations": null,
+      "warnings": null,
+      "errors": null,
+      "disabled": null,
+      "generalInformations": [],
+      "generalWarnings": [],
+      "generalErrors": []
+    }
+    try {
+      const response = await axios.post(ISSUE_UPDATE, body);
+      return response;
+    } catch (error) {
+      console.log(error)
+    }
+  }
   async DeleteIssue(param: any) {
-      try {
-        const response = await axios.post(ISSUE_DELETE_URL, param);
-        return response;
-      } catch (error) {
-        console.log(error)
-      }
+    try {
+      const response = await axios.post(ISSUE_DELETE_URL, param);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
